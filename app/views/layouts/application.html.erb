@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CVWOProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div id = "container">
+
+      <div id = "header">
+        <h1>Task Manager</h1>
+        <h5>Task Manager powered by Ruby on Rails</h5>
+      </div>
+
+      <div id = "content">
+        <%= yield %>
+      </div>
+
+    </div>
+  </body>
+</html>
