@@ -1,0 +1,58 @@
+<h1>Tasks Index</h1>
+
+<% if @tags.blank? %>
+    <p>There are no tags yet.</p>
+<% else %>
+    <label for="tags">List of all tags: </label>
+    <select id="tags">
+        <% @tags.each do |g| %>
+            <option><%= g.name %></option>
+        <% end %>
+    </select>
+<% end %>
+<br>
+
+<%= form_with url:'tasks/create_tag', model: @tag do |f| %>
+    <p>
+        <strong><%= f.label :name , "Add tag : " %></strong>
+        <br>
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+        <%= f.submit 'Create tag' %>
+    </p>
+<% end %>
+
+<br>
+<br>
+
+<% if @tasks.blank? %>
+    <p>There are no tasks available.</p>
+<% end %>
+
+<div class = "task_table">
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Tag</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+            <% @tasks.each do |t| %>
+                <tr>
+                    <td><%= t.title %></td>
+                    <td><%= t.tag.name %></td>
+                    <td><%= t.date %></td>
+                    <td><%= t.time %></td>
+                    <td><%= t.completed %></td>
+                    <td><%= link_to 'Edit', {action: 'edit', id: t.id} %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
