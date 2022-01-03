@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    before_action :get_task, only: [:edit, :update, :destroy]
     def index
         @tasks = Task.all
         @tags = Tag.all
@@ -21,12 +22,9 @@ class TasksController < ApplicationController
     end
 
     def edit
-        @task = Task.find(params[:id])
     end
 
     def update
-        @task = Task.find(params[:id])
-
         if @task.update(task_param)
             flash[:notice] = "'#{@task.title}' task was updated successfully."
             redirect_to action: "index"
@@ -36,7 +34,9 @@ class TasksController < ApplicationController
     end
 
     def destroy
-    
+        @task.destroy
+        flash[:notice] = "'#{@task.title}' task was deleted successfully."
+        redirect_to action: "index"
     end
     
     def create_tag
@@ -44,12 +44,18 @@ class TasksController < ApplicationController
 
         if @tag.save
             flash[:notice] = "'#{@tag.name}' tag was created successfully."
+        else
+            flash[:error] = "ERROR : #{@tag.errors.full_messages}"
         end
 
         redirect_to action: "index" 
     end
 
     private
+
+    def get_task
+        @task = Task.find(params[:id])
+    end
 
     def task_param
         params.require(:task).permit(:title, :tag_id, :date, :time)

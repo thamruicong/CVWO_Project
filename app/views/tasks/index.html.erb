@@ -29,30 +29,63 @@
 
 <% if @tasks.blank? %>
     <p>There are no tasks available.</p>
+<% else %>
+
+    <div class = "task_table">
+        <table>
+            <thead>
+                <th>Title</th>
+                <th>Tag</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Completed</th>
+                <th colspan=2>Actions</th>
+            </thead>
+
+            <tbody>
+                <% @tasks.each do |t| %>
+                    <tr>
+                        <td><%= t.title %></td>
+                        <td><%= t.tag.name %></td>
+                        <td>
+                            <% if t.date.day.between?(0, 9) %>
+                                0<%= t.date.day %>
+                            <% else %>
+                                <%= t.date.day %>
+                            <% end %>
+                            /
+                            <% if t.date.month.between?(0, 9) %>
+                                0<%= t.date.month %>
+                            <% else %>
+                                <%= t.date.month %>
+                            <% end %>
+                            / <%= t.date.year %>
+                        </td>
+                        <td>
+                            <% if t.time.hour.between?(0, 9) %>
+                                0<%= t.time.hour %> : 
+                
+                                <% if t.time.min.between?(0, 9) %>
+                                    0<%= t.time.min %>
+                                <% else %>
+                                    <%= t.time.min %>
+                                <% end %>
+                            <% else %>
+                                <%= t.time.hour %> : 
+                                
+                                <% if t.time.min.between?(0, 9) %>
+                                    0<%= t.time.min %>
+                                <% else %>
+                                    <%= t.time.min %>
+                                <% end %>
+                            <% end %>
+                        </td>
+                        <td><%= t.completed %></td>
+                        <td><%= link_to 'Edit', {action: 'edit', id: t.id} %></td>
+                        <td><%= link_to 'Delete', {action: 'destroy', id: t.id} %></td> <%# {confirm: "Are you sure?"} %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 <% end %>
-
-<div class = "task_table">
-    <table>
-        <thead>
-            <th>Title</th>
-            <th>Tag</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Completed</th>
-            <th>Actions</th>
-        </thead>
-
-        <tbody>
-            <% @tasks.each do |t| %>
-                <tr>
-                    <td><%= t.title %></td>
-                    <td><%= t.tag.name %></td>
-                    <td><%= t.date %></td>
-                    <td><%= t.time %></td>
-                    <td><%= t.completed %></td>
-                    <td><%= link_to 'Edit', {action: 'edit', id: t.id} %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>

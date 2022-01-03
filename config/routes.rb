@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "tasks/edit"
   patch "tasks/update"
   post "tasks/create_tag"
+  get "tasks/destroy"
 end
