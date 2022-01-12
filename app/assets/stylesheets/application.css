@@ -19,3 +19,7 @@
      border-collapse: collapse;
      padding: 5px;
  }
+
+ div#root {
+    color: red;
+ }

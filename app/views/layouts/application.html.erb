@@ -7,7 +7,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_pack_tag 'application' %>
+    <%# <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -16,20 +17,9 @@
       <div id = "header">
         <h1>Task Manager</h1>
         <h5>Task Manager powered by Ruby on Rails</h5>
-
-        <nav id = "nav_bar">
-          <%= link_to 'Index', {action: "index"} %>
-          <%= link_to 'New', {action: "new"} %>
-        </nav>
       </div>
 
       <div id = "content">
-        <% flash.each do |name, msg| %>
-          <div class="alert">
-            <%= msg %>
-          </div>
-        <% end %>
-
         <%= yield %>
       </div>
 
