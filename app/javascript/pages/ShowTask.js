@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { confirmAlert } from 'react-confirm-alert';
 import axios from 'axios'
 
 import IndividualTask from '../components/Tasks/IndividualTask';
@@ -32,19 +33,61 @@ class ShowTask extends Component {
                 console.log(tag);
             });
         });
-        // .catch(err => {
-        //     console.log(err);
-        // });
+    }
 
-        // const tag_id = this.state.task.tag_id;
-        // const url_tag = '/api/tags/show/' + tag_id;
+    handleDelete() {
+        const curr_url = window.location.pathname;
+        const task_id = curr_url.slice(7);
+        const url = '/api/tasks/' + task_id;
 
-        // axios.get(url_tag).then(res => {
-        //     const tag = res.data;
-        //     this.setState({ tag: tag });
-        // });
-        // .catch(err => {
-        //     console.log(err);
+        const token = document.querySelector('meta[name="csrf-token"]').content;  
+        axios.delete(url, {withCredentials: true,
+        headers:
+        {
+            "X-CSRF-Token": token,
+            "Content-Type": "application/json",
+        }})
+        .then(res => {
+            window.location.assign("/tasks");
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        // confirmAlert({
+        //     title: 'Confirm to delete',
+        //     message: 'Are you sure?',
+        //     closeOnClickOutside: true,
+        //     buttons: [
+        //         {
+        //             label: 'Yes',
+        //             onClick: () => {
+        //                 const curr_url = window.location.pathname;
+        //                 const task_id = curr_url.slice(7);
+        //                 const url = '/api/tasks/' + task_id;
+
+        //                 const token = document.querySelector('meta[name="csrf-token"]').content;  
+        //                 axios.delete(url, {withCredentials: true,
+        //                 headers:
+        //                 {
+        //                     "X-CSRF-Token": token,
+        //                     "Content-Type": "application/json",
+        //                 }})
+        //                 .then(res => {
+        //                     window.location.assign("/tasks");
+        //                     console.log(res.data);
+        //                 })
+        //                 .catch(err => {
+        //                     console.log(err);
+        //                 })
+        //             },
+        //         },
+        //         {
+        //             label: 'No',
+        //             onClick: () => alert("No")
+        //         }
+        //     ]
         // });
     }
 
@@ -55,6 +98,7 @@ class ShowTask extends Component {
                 <IndividualTask 
                     task={this.state.task}
                     tag={this.state.tag}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         )

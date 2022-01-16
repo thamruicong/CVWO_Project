@@ -7,39 +7,36 @@ function ListTasks(props) {
             <p>This is the ListTasks component for our app.</p>
             
             <div>
-                <ol>
+                <p>Uncompleted Tasks: </p>
+                <ul>
                     {
                         props.tasks
+                            .filter(task => !task.completed)
                             .map(task => 
                                 <li key={task.id}>
                                     <Link to={"/tasks/" + task.id}>{task.title}</Link>
                                 </li>
                                 )
                     }
-                </ol>
+                </ul>
+            </div>
+
+            <div>
+                <p>Completed Tasks : </p>
+                <ul>
+                    {
+                        props.tasks
+                            .filter(task => task.completed)
+                            .map(task => 
+                                <li key={task.id}>
+                                    <Link to={"/tasks/" + task.id}>{task.title}</Link>
+                                </li>
+                                )
+                    }
+                </ul>
             </div>
         </div>
     )
 }
-
-// class ListTasks extends Component {
-//     render() {
-//         console.log(this.props.tasks);
-
-//         return (
-//             <div>
-//                 <p>This is the ListTasks component for our app.</p>
-//                 <ol>
-//                     {
-//                         this.props.tasks
-//                             .map(task => 
-//                                 <li key={task.id}>{task.title}</li>
-//                                 )
-//                     }
-//                 </ol>
-//             </div>
-//         )
-//     }
-// }
 
 export default ListTasks

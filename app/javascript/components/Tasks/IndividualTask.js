@@ -28,21 +28,10 @@ function IndividualTask(props) {
                 </p>
             </div>
 
-            <Link to={"/tasks/edit/" + props.task.id} >Edit task</Link>
+            <Link to={"/tasks/edit/" + props.task.id}>Edit</Link> |{" "}
+            <button onClick={props.handleDelete}>Delete</button>
         </div>
     )
 }
-
-// class IndividualTask extends Component {
-//     render() {
-//         console.log(this.props.task);
-
-//         return (
-//             <div>
-//                 <p>This is the IndividualTask component of our app.</p>
-//             </div>
-//         )
-//     }
-// }
 
 export default IndividualTask

@@ -80,9 +80,6 @@ class EditTask extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const curr_url = window.location.pathname;
-        const task_id = curr_url.slice(12);
-
         const task = {
             title: this.state.task.title,
             tag_id: this.state.task.tag_id,
@@ -91,8 +88,12 @@ class EditTask extends Component {
             completed: this.state.task.completed,
         };
 
+        const curr_url = window.location.pathname;
+        const task_id = curr_url.slice(12);
+        const url = '/api/tasks/update/' + task_id;
+
         const token = document.querySelector('meta[name="csrf-token"]').content;  
-        axios.put('/api/tasks/update/' + task_id, { task }, {withCredentials: true,
+        axios.put(url, { task }, {withCredentials: true,
         headers:
         {
             "X-CSRF-Token": token,

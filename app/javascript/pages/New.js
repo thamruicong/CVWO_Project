@@ -68,23 +68,23 @@ class New extends Component {
             time: this.state.task.time,
             completed: this.state.task.completed,
         };
-        
-        console.log(task);
-        // window.location.assign("/tasks");
 
-        // const token = document.querySelector('meta[name="csrf-token"]').content;  
-        // axios.post('/api/tasks/create', { task }, {withCredentials: true,
-        // headers:
-        // {
-        //     "X-CSRF-Token": token,
-        //     "Content-Type": "application/json",
-        // }})
-        // .then(res => {
-        //     console.log(res.data);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
+        const url = '/api/tasks/create';
+        
+        const token = document.querySelector('meta[name="csrf-token"]').content;  
+        axios.post(url, { task }, {withCredentials: true,
+        headers:
+        {
+            "X-CSRF-Token": token,
+            "Content-Type": "application/json",
+        }})
+        .then(res => {
+            console.log(res.data);
+            window.location.assign("/tasks");
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
