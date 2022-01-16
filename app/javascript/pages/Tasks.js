@@ -17,6 +17,8 @@ class Tasks extends Component {
         axios.get(url).then(res => {
             const tasks = res.data;
             this.setState({ tasks: tasks });
+
+            console.log(tasks);
         });
     }
 

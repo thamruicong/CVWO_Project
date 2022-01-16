@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import TaskForm from '../components/Tasks/TaskForm';
 
-class New extends Component {
+class EditTask extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -23,9 +23,28 @@ class New extends Component {
     }
 
     componentDidMount() {
-        const url = '/api/tags/index';
+        const curr_url = window.location.pathname;
+        const task_id = curr_url.slice(12);
+        const url_task = '/api/tasks/edit/' + task_id;
 
-        axios.get(url).then(res => {
+        axios.get(url_task).then(res => {
+            const task = res.data;
+            this.setState({ 
+                task: {
+                    title: task.title,
+                    tag_id: task.tag_id,
+                    date: task.date ? task.date : '',
+                    time: task.time ? task.time.slice(11, 23) : '',
+                    completed: task.completed
+                } 
+            });
+
+            console.log(task);
+        });
+
+        const url_tag = '/api/tags/index';
+
+        axios.get(url_tag).then(res => {
             const tags = res.data;
             this.setState({ tags: tags });
 
@@ -61,6 +80,9 @@ class New extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
+        const curr_url = window.location.pathname;
+        const task_id = curr_url.slice(12);
+
         const task = {
             title: this.state.task.title,
             tag_id: this.state.task.tag_id,
@@ -68,40 +90,38 @@ class New extends Component {
             time: this.state.task.time,
             completed: this.state.task.completed,
         };
-        
-        console.log(task);
-        // window.location.assign("/tasks");
 
-        // const token = document.querySelector('meta[name="csrf-token"]').content;  
-        // axios.post('/api/tasks/create', { task }, {withCredentials: true,
-        // headers:
-        // {
-        //     "X-CSRF-Token": token,
-        //     "Content-Type": "application/json",
-        // }})
-        // .then(res => {
-        //     console.log(res.data);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
+        const token = document.querySelector('meta[name="csrf-token"]').content;  
+        axios.put('/api/tasks/update/' + task_id, { task }, {withCredentials: true,
+        headers:
+        {
+            "X-CSRF-Token": token,
+            "Content-Type": "application/json",
+        }})
+        .then(res => {
+            window.location.assign("/tasks/" + task_id);
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
         return (
             <div>
-                <p>This is the New page for our app.</p>
+                <p>This is the EditTask page for our app.</p>
                 <TaskForm 
-                    handleChange={this.handleChange}
-                    handleCheckbox={this.handleCheckbox} 
+                    handleChange={this.handleChange} 
                     handleSubmit={this.handleSubmit}
+                    handleCheckbox={this.handleCheckbox}
                     task={this.state.task}
                     tags={this.state.tags}
-                    button_text="Add"
+                    button_text="Edit"
                 />
             </div>
         )
     }
 }
 
-export default New
+export default EditTask

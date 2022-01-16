@@ -11,6 +11,7 @@ import Home from '../pages/Home'
 import Tasks from '../pages/Tasks'
 import New from '../pages/New'
 import ShowTask from '../pages/ShowTask'
+import EditTask from '../pages/EditTask'
 
 // Error Page
 import PageNotFound from '../pages/PageNotFound'
@@ -26,6 +27,7 @@ class App extends Component {
                         <Route path="/tasks" element={<Tasks />} />
                         <Route path="/tasks/new" element={<New />} />
                         <Route path="/tasks/:id" element={<ShowTask />} />
+                        <Route path="/tasks/edit/:id" element={<EditTask />} />
 
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>

@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function ListTasks(props) {
     return (
@@ -10,7 +11,9 @@ function ListTasks(props) {
                     {
                         props.tasks
                             .map(task => 
-                                <li key={task.id}>{task.title}</li>
+                                <li key={task.id}>
+                                    <Link to={"/tasks/" + task.id}>{task.title}</Link>
+                                </li>
                                 )
                     }
                 </ol>

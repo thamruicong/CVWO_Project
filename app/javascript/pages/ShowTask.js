@@ -20,6 +20,17 @@ class ShowTask extends Component {
         axios.get(url_task).then(res => {
             const task = res.data;
             this.setState({ task: task });
+
+            const tag_id = task.tag_id;
+            const url_tag = '/api/tags/show/' + tag_id;
+
+            axios.get(url_tag).then(res => {
+                const tag = res.data;
+                this.setState({ tag: tag });
+
+                console.log(task);
+                console.log(tag);
+            });
         });
         // .catch(err => {
         //     console.log(err);
