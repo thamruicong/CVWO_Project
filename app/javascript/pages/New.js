@@ -93,8 +93,8 @@ class New extends Component {
                 <p>This is the New page for our app.</p>
                 <TaskForm 
                     handleChange={this.handleChange}
-                    handleCheckbox={this.handleCheckbox} 
                     handleSubmit={this.handleSubmit}
+                    handleCheckbox={this.handleCheckbox}
                     task={this.state.task}
                     tags={this.state.tags}
                     button_text="Add"
