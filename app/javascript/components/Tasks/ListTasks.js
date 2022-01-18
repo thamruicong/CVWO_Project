@@ -7,26 +7,12 @@ function ListTasks(props) {
             <p>This is the ListTasks component for our app.</p>
             
             <div>
-                <p>Uncompleted Tasks: </p>
                 <ul>
                     {
                         props.tasks
-                            .filter(task => !task.completed)
-                            .map(task => 
-                                <li key={task.id}>
-                                    <Link to={"/tasks/" + task.id}>{task.title}</Link>
-                                </li>
-                                )
-                    }
-                </ul>
-            </div>
-
-            <div>
-                <p>Completed Tasks : </p>
-                <ul>
-                    {
-                        props.tasks
-                            .filter(task => task.completed)
+                            .filter(task => {
+                                (task.completed == props.displayCompleted) && (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
+                            })
                             .map(task => 
                                 <li key={task.id}>
                                     <Link to={"/tasks/" + task.id}>{task.title}</Link>
