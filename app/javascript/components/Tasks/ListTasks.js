@@ -11,7 +11,9 @@ function ListTasks(props) {
                     {
                         props.tasks
                             .filter(task => {
-                                (task.completed == props.displayCompleted) && (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
+                                return ((task.completed == props.displayCompleted) 
+                                        && 
+                                        (task.title.toLowerCase().includes(props.searchText.toLowerCase())));
                             })
                             .map(task => 
                                 <li key={task.id}>

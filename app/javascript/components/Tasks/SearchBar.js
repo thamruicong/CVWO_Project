@@ -7,13 +7,13 @@ function SearchBar(props) {
 
             <div>
                 <label>
-                    Filter : 
+                    Filter: 
                     <input type="text" name="searchText" placeholder="Example Task" value={props.searchText} onChange={props.handleChange} />
                 </label>
                 <br />
                 <br />
                 <label>
-                    Show Completed :
+                    Show Completed:
                     <input type="checkbox" name="displayCompleted" checked={props.displayCompleted} onChange={props.handleCheckbox} />
                 </label>
             </div>

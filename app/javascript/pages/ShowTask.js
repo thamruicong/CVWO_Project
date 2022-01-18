@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { confirmAlert } from 'react-confirm-alert';
 import axios from 'axios'
 
 import IndividualTask from '../components/Tasks/IndividualTask';
@@ -36,59 +35,26 @@ class ShowTask extends Component {
     }
 
     handleDelete() {
-        const curr_url = window.location.pathname;
-        const task_id = curr_url.slice(7);
-        const url = '/api/tasks/' + task_id;
+        if (confirm("Are you sure?")) {
+            const curr_url = window.location.pathname;
+            const task_id = curr_url.slice(7);
+            const url = '/api/tasks/' + task_id;
 
-        const token = document.querySelector('meta[name="csrf-token"]').content;  
-        axios.delete(url, {withCredentials: true,
-        headers:
-        {
-            "X-CSRF-Token": token,
-            "Content-Type": "application/json",
-        }})
-        .then(res => {
-            window.location.assign("/tasks");
-            console.log(res.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
-        // confirmAlert({
-        //     title: 'Confirm to delete',
-        //     message: 'Are you sure?',
-        //     closeOnClickOutside: true,
-        //     buttons: [
-        //         {
-        //             label: 'Yes',
-        //             onClick: () => {
-        //                 const curr_url = window.location.pathname;
-        //                 const task_id = curr_url.slice(7);
-        //                 const url = '/api/tasks/' + task_id;
-
-        //                 const token = document.querySelector('meta[name="csrf-token"]').content;  
-        //                 axios.delete(url, {withCredentials: true,
-        //                 headers:
-        //                 {
-        //                     "X-CSRF-Token": token,
-        //                     "Content-Type": "application/json",
-        //                 }})
-        //                 .then(res => {
-        //                     window.location.assign("/tasks");
-        //                     console.log(res.data);
-        //                 })
-        //                 .catch(err => {
-        //                     console.log(err);
-        //                 })
-        //             },
-        //         },
-        //         {
-        //             label: 'No',
-        //             onClick: () => alert("No")
-        //         }
-        //     ]
-        // });
+            const token = document.querySelector('meta[name="csrf-token"]').content;  
+            axios.delete(url, {withCredentials: true,
+            headers:
+            {
+                "X-CSRF-Token": token,
+                "Content-Type": "application/json",
+            }})
+            .then(res => {
+                window.location.assign("/tasks");
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
     }
 
     render() {
