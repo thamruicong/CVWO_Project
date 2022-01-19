@@ -13,13 +13,28 @@ function ListTasks(props) {
                             .filter(task => {
                                 return ((task.completed == props.displayCompleted) 
                                         && 
-                                        (task.title.toLowerCase().includes(props.searchText.toLowerCase())));
+                                        (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
+                                        &&
+                                        (props.selectedTag == '' ? true : task.tag_id == props.selectedTag)
+                                        );
                             })
                             .map(task => 
                                 <li key={task.id}>
-                                    <Link to={"/tasks/" + task.id}>{task.title}</Link>
+                                    <Link to={"/tasks/" + task.id}>{task.title}
+                                     {/* |{" " + props.handleTag(task)}  */}
+                                    </Link> 
                                 </li>
-                                )
+                                    // props.tags
+                                    //     .filter(tag => {
+                                    //         return (tag.id == task.tag_id);
+                                    //     })
+                                    //     .map(tag => 
+                                    //         <li key={task.id}>
+                                    //             <Link to={"/tasks/" + task.id}>{task.title} |{" "} {tag.name}
+                                    //             </Link> 
+                                    //         </li>
+                                    //     )
+                            )
                     }
                 </ul>
             </div>

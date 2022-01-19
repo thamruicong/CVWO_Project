@@ -3,25 +3,41 @@ import axios from 'axios'
 
 import ListTasks from '../components/Tasks/ListTasks'
 import SearchBar from '../components/Tasks/SearchBar';
+import TagsModal from '../components/Tags/TagsModal';
 
 class Tasks extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleCheckbox = this.handleCheckbox.bind(this);
+
         this.state = {
             tasks: [],
+            tags: [],
+
             searchText: '',
+            selectedTag: '',
             displayCompleted: false,
         };
     }
 
     componentDidMount() {
-        const url = '/api/tasks/index';
+        const url_tasks = '/api/tasks/index';
 
-        axios.get(url).then(res => {
+        axios.get(url_tasks).then(res => {
             const tasks = res.data;
             this.setState({ tasks: tasks });
 
             console.log(tasks);
+        });
+
+        const url_tags = '/api/tags/index';
+
+        axios.get(url_tags).then(res => {
+            const tags = res.data;
+            this.setState({ tags: tags });
+
+            console.log(tags);
         });
     }
 
@@ -46,6 +62,17 @@ class Tasks extends Component {
         });
     }
 
+    // handleTag(task, tags) {
+    //     const taskTag = "";
+    //     tags.forEach(tag => {
+    //         if(tag.id == task.tag_id) {
+    //             taskTag = tag.name;
+    //         }
+    //     });
+
+    //     return taskTag;
+    // }
+
     render() {
         return (
             <div>
@@ -54,11 +81,17 @@ class Tasks extends Component {
                     handleChange={this.handleChange}
                     handleCheckbox={this.handleCheckbox}
                     searchText={this.state.searchText}
+                    tags={this.state.tags}
+                    selectedTag={this.state.selectedTag}
                     displayCompleted={this.state.displayCompleted}
                 />
+                <TagsModal />
                 <ListTasks 
+                    // handleTag={this.handleTag}
                     tasks={this.state.tasks}
+                    // tags={this.state.tags}
                     searchText={this.state.searchText}
+                    selectedTag={this.state.selectedTag}
                     displayCompleted={this.state.displayCompleted}
                 />
             </div>

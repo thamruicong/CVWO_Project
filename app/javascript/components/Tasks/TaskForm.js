@@ -16,7 +16,7 @@ function TaskForm(props) {
                     <label>
                         Tag: 
                         <select name="tag_id" value={props.task.tag_id} required onChange={props.handleChange}>
-                            <option value=''>----------</option>
+                            <option disabled value=''>----------</option>
                             {
                                 props.tags
                                 .map(tag => 

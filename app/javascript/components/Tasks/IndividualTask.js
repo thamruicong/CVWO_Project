@@ -23,7 +23,7 @@ function IndividualTask(props) {
                 
                 <p>Completed : 
                     {
-                        props.task.completed ? " Done" : " Incompleted"
+                        props.task.completed ? " Done" : " Incomplete"
                     }
                 </p>
             </div>

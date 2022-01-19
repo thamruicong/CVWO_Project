@@ -6,6 +6,8 @@ import IndividualTask from '../components/Tasks/IndividualTask';
 class ShowTask extends Component {
     constructor(props) {
         super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+
         this.state = {
             task: [],
             tag: [],
@@ -30,11 +32,14 @@ class ShowTask extends Component {
 
                 console.log(task);
                 console.log(tag);
+            })
+            .catch(err => {
+                console.log(err);
             });
         });
     }
 
-    handleDelete() {
+    handleDelete = () => {
         if (confirm("Are you sure?")) {
             const curr_url = window.location.pathname;
             const task_id = curr_url.slice(7);

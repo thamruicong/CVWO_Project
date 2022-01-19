@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 function SearchBar(props) {
     return (
@@ -7,8 +8,22 @@ function SearchBar(props) {
 
             <div>
                 <label>
-                    Filter: 
+                    Filter by task: 
                     <input type="text" name="searchText" placeholder="Example Task" value={props.searchText} onChange={props.handleChange} />
+                </label>
+                <br />
+                <br />
+                <label>
+                    Filter by tag: 
+                    <select name="selectedTag" value={props.selectedTag} onChange={props.handleChange}>
+                        <option value=''>----------</option>
+                        {
+                            props.tags
+                            .map(tag => 
+                                <option value={tag.id} key={tag.id}>{tag.name}</option>
+                            )
+                        }
+                    </select>
                 </label>
                 <br />
                 <br />
