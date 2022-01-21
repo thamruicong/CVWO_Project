@@ -64,8 +64,7 @@ class ShowTask extends Component {
 
     render() {
         return (
-            <div>
-                <p>This is the ShowTask page for our app.</p>
+            <div className='sub-content'>
                 <IndividualTask 
                     task={this.state.task}
                     tag={this.state.tag}

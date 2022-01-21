@@ -4,10 +4,8 @@ import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom
 // Nav Bar
 import MainNav from '../components/NavBar/MainNav'
 
-// Home Page
+// Main Pages
 import Home from '../pages/Home'
-
-// Tasks Pages
 import Tasks from '../pages/Tasks'
 import New from '../pages/New'
 import ShowTask from '../pages/ShowTask'
@@ -19,7 +17,7 @@ import PageNotFound from '../pages/PageNotFound'
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className='main-content'>
                 <Router>
                     <MainNav />
                     <Routes>

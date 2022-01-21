@@ -125,25 +125,27 @@ class TagsModal extends Component {
     render() {
         return (
             <div>
-                <p>This is the TagsModal component for our app.</p>
+                <p>
+                    <button
+                        className='nice-button'
+                        style={{margin: "10px"}}
+                        onClick={() => {
+                            this.setTagForm("add");
+                            this.showModal();
+                        }}>
+                            Add tag
+                    </button>
 
-                <button
-                    style={{margin: "10px"}}
-                    onClick={() => {
-                        this.setTagForm("add");
-                        this.showModal();
-                    }}>
-                        Add tag
-                </button>
-
-                <button
-                    style={{margin: "10px"}}
-                    onClick={() => {
-                        this.setTagForm("delete");
-                        this.showModal();
-                    }}>
-                        Delete tag
-                </button>
+                    <button
+                        className='nice-button'
+                        style={{margin: "10px"}}
+                        onClick={() => {
+                            this.setTagForm("delete");
+                            this.showModal();
+                        }}>
+                            Delete tag
+                    </button>
+                </p>
 
                 <Modal
                     show={this.state.showModal}

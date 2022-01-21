@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom'
 function ListTasks(props) {
     return (
         <div>
-            <p>This is the ListTasks component for our app.</p>
-            
             <div>
-                <ul>
+                <p>Completed</p>
+                <ul className='task-list'>
                     {
                         props.tasks
                             .filter(task => {
-                                return ((task.completed == props.displayCompleted) 
+                                return ((task.completed == true) 
                                         && 
                                         (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
                                         &&
@@ -19,21 +18,33 @@ function ListTasks(props) {
                                         );
                             })
                             .map(task => 
-                                <li key={task.id}>
-                                    <Link to={"/tasks/" + task.id}>{task.title}
-                                     {/* |{" " + props.handleTag(task)}  */}
+                                <li className='task-list-item' key={task.id}>
+                                    <Link to={"/tasks/" + task.id} className='task-list-link'>{task.title}
                                     </Link> 
                                 </li>
-                                    // props.tags
-                                    //     .filter(tag => {
-                                    //         return (tag.id == task.tag_id);
-                                    //     })
-                                    //     .map(tag => 
-                                    //         <li key={task.id}>
-                                    //             <Link to={"/tasks/" + task.id}>{task.title} |{" "} {tag.name}
-                                    //             </Link> 
-                                    //         </li>
-                                    //     )
+                            )
+                    }
+                </ul>
+            </div>
+
+            <div>
+                <p>Incomplete</p>
+                <ul className='task-list'>
+                    {
+                        props.tasks
+                            .filter(task => {
+                                return ((task.completed == false) 
+                                        && 
+                                        (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
+                                        &&
+                                        (props.selectedTag == '' ? true : task.tag_id == props.selectedTag)
+                                        );
+                            })
+                            .map(task => 
+                                <li className='task-list-item' key={task.id}>
+                                    <Link to={"/tasks/" + task.id} className='task-list-link'>{task.title}
+                                    </Link> 
+                                </li>
                             )
                     }
                 </ul>

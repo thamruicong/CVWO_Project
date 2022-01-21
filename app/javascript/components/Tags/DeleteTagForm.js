@@ -3,13 +3,11 @@ import React, { Component, useEffect, useState } from 'react'
 function DeleteTagForm(props) {
     return (
         <div>
-            <p>This is the TagForm component for our app.</p>
-
             <div>
             <form onSubmit={props.handleSubmit}>
                     <label>
                         Tag Name: 
-                        <select name="selectedTagId" value={props.selectedTagId} required onChange={props.handleChange}>
+                        <select name="selectedTagId" className='input-field' value={props.selectedTagId} required onChange={props.handleChange}>
                             <option disabled value=''>----------</option>
                             {
                                 props.tags
@@ -21,7 +19,7 @@ function DeleteTagForm(props) {
                     </label>
                     <br />
                     <br />
-                    <button type="submit">Delete</button>
+                    <button className='nice-button' type="submit">Delete</button>
                     <br />
                     <br />
                 </form>

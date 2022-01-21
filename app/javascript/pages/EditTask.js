@@ -111,8 +111,8 @@ class EditTask extends Component {
 
     render() {
         return (
-            <div>
-                <p>This is the EditTask page for our app.</p>
+            <div className='sub-content'>
+                <h3>Edit a task</h3>
                 <TaskForm 
                     handleChange={this.handleChange} 
                     handleSubmit={this.handleSubmit}

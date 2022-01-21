@@ -4,18 +4,16 @@ import { Link } from 'react-router-dom'
 function SearchBar(props) {
     return (
         <div>
-            <p>This is the SearchBar component of our app.</p>
-
             <div>
-                <label>
+                <label className='input-label'>
                     Filter by task: 
-                    <input type="text" name="searchText" placeholder="Example Task" value={props.searchText} onChange={props.handleChange} />
+                    <input className='input-field' type="text" name="searchText" placeholder="Example Task" value={props.searchText} onChange={props.handleChange} autoComplete='off'/>
                 </label>
                 <br />
                 <br />
                 <label>
                     Filter by tag: 
-                    <select name="selectedTag" value={props.selectedTag} onChange={props.handleChange}>
+                    <select className='input-field' name="selectedTag" value={props.selectedTag} onChange={props.handleChange}>
                         <option value=''>----------</option>
                         {
                             props.tags
@@ -24,12 +22,6 @@ function SearchBar(props) {
                             )
                         }
                     </select>
-                </label>
-                <br />
-                <br />
-                <label>
-                    Show Completed:
-                    <input type="checkbox" name="displayCompleted" checked={props.displayCompleted} onChange={props.handleCheckbox} />
                 </label>
             </div>
         </div>

@@ -1,0 +1,123 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ #header {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-variant: small-caps;
+  }
+ 
+ 
+  .main-content {
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+    border-style: dashed;
+    padding: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-variant: small-caps;
+    font-size: large;
+  }
+
+  .sub-content {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .error-page {
+    color: red;
+    text-align: left;
+  }
+
+  .nav-bar {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .nav-bar-list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(228, 228, 228);
+  }
+
+  .nav-bar-item {
+    display: inline-block;
+    margin: 0px 20px;
+    padding: 10px 20px;
+  }
+
+  .nav-bar-link {
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .input-field {
+    width: 200px;
+    margin: 0px 10px;
+    font:inherit;
+    font-variant: small-caps;
+  }
+
+  .nice-button {
+    border: none;
+    font-size: medium;
+    display: inline-block;
+    padding: 15px;
+    background-color: rgb(228, 228, 228);
+    font:inherit;
+    font-variant: small-caps;
+    text-align: center;
+    transition-duration: 0.3s;
+  }
+
+  .nice-button:hover {
+    background-color: black;
+    color: rgb(228, 228, 228);
+    cursor: pointer;
+  }
+
+  .button-as-link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font:inherit;
+    font-variant: small-caps;
+    font-size: large;
+    color: #069;
+    text-decoration: underline;
+  }
+
+  .button-as-link:hover {
+    cursor: pointer;
+  }
+
+  .task-list {
+    list-style-type: square;
+  }
+
+  .task-list-item {
+    margin: 15px 0px;
+  }
+
+  .task-list-link {
+    text-decoration: none;
+    color: black;
+  }
+
+  .task-list-link:hover {
+    color: lightgrey;
+  }
+  

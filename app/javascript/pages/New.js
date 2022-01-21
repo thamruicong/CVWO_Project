@@ -90,8 +90,8 @@ class New extends Component {
 
     render() {
         return (
-            <div>
-                <p>This is the New page for our app.</p>
+            <div className='sub-content'>
+                <h3>Add a new task</h3>
                 <TaskForm 
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}

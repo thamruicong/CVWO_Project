@@ -9,7 +9,6 @@ class Tasks extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleCheckbox = this.handleCheckbox.bind(this);
 
         this.state = {
             tasks: [],
@@ -17,7 +16,6 @@ class Tasks extends Component {
 
             searchText: '',
             selectedTag: '',
-            displayCompleted: false,
         };
     }
 
@@ -53,46 +51,20 @@ class Tasks extends Component {
         });
     }
 
-    handleCheckbox = () => {
-        this.setState((prevState) => {
-            return {
-                ...prevState,
-                displayCompleted: !prevState.displayCompleted,
-            }
-        });
-    }
-
-    // handleTag(task, tags) {
-    //     const taskTag = "";
-    //     tags.forEach(tag => {
-    //         if(tag.id == task.tag_id) {
-    //             taskTag = tag.name;
-    //         }
-    //     });
-
-    //     return taskTag;
-    // }
-
     render() {
         return (
-            <div>
-                <p>This is the Tasks page for our app.</p>
+            <div className='sub-content'>
                 <SearchBar 
                     handleChange={this.handleChange}
-                    handleCheckbox={this.handleCheckbox}
                     searchText={this.state.searchText}
                     tags={this.state.tags}
                     selectedTag={this.state.selectedTag}
-                    displayCompleted={this.state.displayCompleted}
                 />
                 <TagsModal />
                 <ListTasks 
-                    // handleTag={this.handleTag}
                     tasks={this.state.tasks}
-                    // tags={this.state.tags}
                     searchText={this.state.searchText}
                     selectedTag={this.state.selectedTag}
-                    displayCompleted={this.state.displayCompleted}
                 />
             </div>
         )

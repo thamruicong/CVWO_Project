@@ -3,19 +3,17 @@ import React, { Component, useEffect, useState } from 'react'
 function TaskForm(props) {
     return (
         <div>
-            <p>This is the TaskForm component for our app.</p>
-
             <div>
                 <form onSubmit={props.handleSubmit}>
                     <label>
                         Title: 
-                        <input type="text" name="title" value={props.task.title} required onChange={props.handleChange} />
+                        <input className='input-field' type="text" name="title" value={props.task.title} required onChange={props.handleChange} autoComplete='off'/>
                     </label>
                     <br />
                     <br />
                     <label>
                         Tag: 
-                        <select name="tag_id" value={props.task.tag_id} required onChange={props.handleChange}>
+                        <select className='input-field' name="tag_id" value={props.task.tag_id} required onChange={props.handleChange}>
                             <option disabled value=''>----------</option>
                             {
                                 props.tags
@@ -29,13 +27,13 @@ function TaskForm(props) {
                     <br />
                     <label>
                         Date: 
-                        <input type="date" name="date" value={props.task.date} onChange={props.handleChange} />
+                        <input className='input-field' type="date" name="date" value={props.task.date} onChange={props.handleChange} />
                     </label>
                     <br />
                     <br />
                     <label>
                         Time: 
-                        <input type="time" name="time" value={props.task.time} onChange={props.handleChange} />
+                        <input className='input-field' type="time" name="time" value={props.task.time} onChange={props.handleChange} />
                     </label>
                     <br />
                     <br />
@@ -45,7 +43,7 @@ function TaskForm(props) {
                     </label>
                     <br />
                     <br />
-                    <button type="submit">{props.button_text}</button>
+                    <button className='nice-button' type="submit">{props.button_text}</button>
                 </form>
             </div>
         </div>

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 function IndividualTask(props) {
     return (
         <div>
-            <p>This is the IndividualTask component of our app.</p>
-
             <div>
                 <p>Title : {props.task.title}</p>
 
@@ -29,7 +27,7 @@ function IndividualTask(props) {
             </div>
 
             <Link to={"/tasks/edit/" + props.task.id}>Edit</Link> |{" "}
-            <button onClick={props.handleDelete}>Delete</button>
+            <button className='button-as-link' onClick={props.handleDelete}>Delete</button>
         </div>
     )
 }

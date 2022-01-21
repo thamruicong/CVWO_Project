@@ -1,27 +1,8 @@
-# README
+# CVWO AY2021/22 Assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About Me
 
-Things you may want to cover:
+Name: Rui Cong
+Matriculation No.: A0234692Y
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-This is my CVWO Project.
-Testing
+I am a Year 1 Computer Science Major.
