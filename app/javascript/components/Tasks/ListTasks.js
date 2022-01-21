@@ -5,12 +5,12 @@ function ListTasks(props) {
     return (
         <div>
             <div>
-                <p>Completed</p>
+                <p>Incomplete</p>
                 <ul className='task-list'>
                     {
                         props.tasks
                             .filter(task => {
-                                return ((task.completed == true) 
+                                return ((task.completed == false) 
                                         && 
                                         (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
                                         &&
@@ -28,12 +28,12 @@ function ListTasks(props) {
             </div>
 
             <div>
-                <p>Incomplete</p>
+                <p>Completed</p>
                 <ul className='task-list'>
                     {
                         props.tasks
                             .filter(task => {
-                                return ((task.completed == false) 
+                                return ((task.completed == true) 
                                         && 
                                         (task.title.toLowerCase().includes(props.searchText.toLowerCase()))
                                         &&
