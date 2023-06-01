@@ -20,3 +20,14 @@ Functionalities
 - Edit a current task
 - Delete a current task
 - Create/Delete tags
+
+## How to use
+
+1. Download the zip file from the [repository](https://github.com/thamruicong/CVWO_Project) and unzip it.
+2. `cd` into the `CVWO_Project` folder.
+3. Run `npm install` to download dependencies.
+4. Run `rake db:migrate` to setup schema.
+5. Run `rails server` on (preferably) an Ubuntu terminal to start the server.
+6. The application will be run on [http://localhost:3000/](http://localhost:3000/)
+
+If there is any questions concerning usage of the application, you can view the User Manual section in FinalWriteUp.pdf.
